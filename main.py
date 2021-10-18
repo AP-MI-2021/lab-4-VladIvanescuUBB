@@ -169,7 +169,7 @@ def inlocuire_lista(lista):
     for i in range(0, len(lista)):
         if lista[i] > 0:
             if patrat_perfect(lista[i]) is True:
-                rezultat.append(lista[i] ** 0.5)
+                rezultat.append(int(lista[i] ** 0.5))
             else:
                 rezultat.append(lista_patrate_perfecte(lista[i]))
         else:
