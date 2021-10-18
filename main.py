@@ -97,7 +97,7 @@ def test_suma_cifrelor():
 def afisare_nr_cu_sum_cif(lista, n):
     """
     functia afiseaza toate numerele dintr-o lista care au suma cifrelor mai mare sau egală decat un număr
-    :param lisa: o lista de numere intregi
+    :param lista: o lista de numere intregi
     :param n: un numar intreg
     :return: toate numerele din lista care au suma cifrelor mai mare sau egală decat n
     """
@@ -179,6 +179,8 @@ def inlocuire_lista(lista):
 
 def test_inlocuire_lista():
     assert inlocuire_lista([-5, 4, 10, -3]) == [-5, 2, [1, 4, 9], -3]
+    assert inlocuire_lista([-5, -4, -3]) == [-5, -4, -3]
+    assert inlocuire_lista([4, 20, -16]) == [2, [1, 4, 9, 16], -16]
 
 
 def main():
@@ -201,7 +203,7 @@ def main():
             print(suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr(lista))
         elif optiune == 4:
             n = int(input("Dati n: "))
-            afisare_nr_cu_sum_cif(lista, n)
+            print(afisare_nr_cu_sum_cif(lista, n))
         elif optiune == 5:
             print(inlocuire_lista(lista))
         elif optiune == 0:
