@@ -60,14 +60,58 @@ def test_suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr():
     assert suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr([1, -2, 3]) == 1
 
 
+def suma_cifrelor(numar):
+    """
+    functia calculeaza suma cifrelor unui numar
+    :param numar: un numar intreg
+    :return: suma cifrelor lui numar
+    """
+    if numar < 0:
+        numar = numar * -1
+    rezultat = 0
+    while numar > 0:
+        rezultat = rezultat + numar % 10
+        numar = numar // 10
+    return rezultat
+
+
+def test_suma_cifrelor():
+    assert suma_cifrelor(12) == 3
+    assert suma_cifrelor(5) == 5
+    assert suma_cifrelor(-35) == 8
+
+
+def afisare_nr_cu_sum_cif(lista , n):
+    """
+    functia afiseaza toate numerele dintr-o lista care au suma cifrelor mai mare sau egală decat un număr
+    :param lisa: o lista de numere intregi
+    :param n: un numar intreg
+    :return: toate numerele din lista care au suma cifrelor mai mare sau egală decat n
+    """
+    rezultat = []
+    for i in lista:
+        if suma_cifrelor(i) >= n:
+            rezultat.append(i)
+    return rezultat
+
+
+def test_afisare_nr_cu_sum_cif():
+    assert afisare_nr_cu_sum_cif([12, 67, 42], 10) == [67]
+    assert afisare_nr_cu_sum_cif([12, 67, 42, 89], 10) == [67, 89]
+    assert afisare_nr_cu_sum_cif([12, 33, 42], 10) == []
+
 
 def main():
     test_cel_mai_mic()
     test_cel_mai_mare()
     test_suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr()
+    test_suma_cifrelor()
+    test_afisare_nr_cu_sum_cif()
     print("1. Citirea unei liste de numere întregi. Citirile repetate suprascriu listele precedente.")
     print("2. Afișarea numărului obținut prin concatenarea tuturor numerelor pozitive din listă.")
     print("3. Să se afișeze suma dintre cel mai mare număr din listă și cel mai mic număr din listă.")
+    print("4. Afișarea tuturor numerelor care au suma cifrelor mai mare sau egală decat un număr n"
+          "citit de la tastatură.")
     print("0. Iesire")
     while True:
         optiune = int(input("Dati optiune: "))
@@ -75,6 +119,9 @@ def main():
             lista = citire_lista()
         elif optiune == 3:
             print(suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr(lista))
+        elif optiune == 4:
+            n = int(input("Dati n: "))
+            afisare_nr_cu_sum_cif(lista, n)
         elif optiune == 0:
             break
         else:
