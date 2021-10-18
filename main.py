@@ -2,8 +2,8 @@ def afisare_meniu():
     print("1. Citirea unei liste de numere întregi. Citirile repetate suprascriu listele precedente.")
     print("2. Afișarea numărului obținut prin concatenarea tuturor numerelor pozitive din listă.")
     print("3. Să se afișeze suma dintre cel mai mare număr din listă și cel mai mic număr din listă.")
-    print("4. Afișarea tuturor numerelor care au suma cifrelor mai mare sau egală decat un număr n"
-          "citit de la tastatură.")
+    print("4. Afișarea tuturor numerelor care au suma cifrelor mai mare sau egală decat"
+          "un număr n citit de la tastatură.")
     print("5. Afișarea listei obținute din lista inițială în care numerele pătrat perfect sunt înlocuite"
           "cu radicalul acestora. În cazul numerelor care nu sunt pătrat perfect, acestea sunt înlocuite"
           "cu o listă cu numerele pătrat perfect mai mici decât numărul inițial."
@@ -183,6 +183,25 @@ def test_inlocuire_lista():
     assert inlocuire_lista([4, 20, -16]) == [2, [1, 4, 9, 16], -16]
 
 
+def concatenare_nr_poz(lista):
+    """
+    functia concateneaza numerele pozitive din lista
+    :param lista: o lista de numere intregi
+    :return: numarul obtinut prin concatenarea numerelor pozitive din lista
+    """
+    rezultat = ""
+    for i in lista:
+        if i > 0:
+            rezultat = rezultat + str(i)
+    return int(rezultat)
+
+
+def test_concatenare_nr_poz():
+    assert concatenare_nr_poz([1, -2, 3]) == 13
+    assert concatenare_nr_poz([12, -2, 35]) == 1235
+    assert concatenare_nr_poz([-1, -2, 3]) == 3
+
+
 def main():
     test_cel_mai_mic()
     test_cel_mai_mare()
@@ -193,12 +212,13 @@ def main():
     test_patrat_perfect()
     test_lista_patrate_perfecte()
     test_inlocuire_lista()
+    test_concatenare_nr_poz()
     while True:
         optiune = int(input("Dati optiune: "))
         if optiune == 1:
             lista = citire_lista()
         elif optiune == 2:
-            print("2")
+            print(concatenare_nr_poz(lista))
         elif optiune == 3:
             print(suma_dintre_cel_mai_mare_nr_si_cel_mai_mic_nr(lista))
         elif optiune == 4:
